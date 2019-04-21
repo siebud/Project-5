@@ -3,6 +3,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -143,6 +144,13 @@ public class HeyFrame extends JFrame {
 					n2.setText(String.valueOf(c.getTwos()));
 					n3.setText(String.valueOf(c.getThrees()));
 					n4.setText(String.valueOf(c.getFours()));
+					
+					ArrayList<String> newList = c.getNames(Integer.valueOf(entryField.getText()));
+					for(int i = 0; i <newList.size(); i++) {
+						String textFormat = "";
+						textFormat = textFormat + newList.get(i) + "\n";
+						stationList.setText(textFormat);
+					}
 				} catch (IOException e) {
 					n0.setText("No station selected");
 					e.printStackTrace();
