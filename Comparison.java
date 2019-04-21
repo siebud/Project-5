@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,8 +23,9 @@ public class Comparison {
 		ArrayList<String> all = new ArrayList<String>();	
 		   
 		id = ID;
-		
-		BufferedReader br = new BufferedReader(new FileReader("Mesonet.txt"));
+		File file = new File("Mesonet.txt");
+		System.out.println(file.exists());
+		BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = br.readLine();
 			while(line != null) {
 				all.add(line);						// makes all a list of the names

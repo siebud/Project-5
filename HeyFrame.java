@@ -2,6 +2,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -37,7 +38,7 @@ public class HeyFrame extends JFrame {
 		JButton showStation;
 		JTextField stationList;
 		JLabel testID;
-		JComboBox selectList;
+		JComboBox<String> selectList;
 		
 		panel1.setLayout(new GridBagLayout());
 		GridBagConstraints layoutConst = null;
@@ -63,7 +64,7 @@ public class HeyFrame extends JFrame {
 		stationList.setEditable(false);
 		
 		testID = new JLabel("Compare with: \t");
-		selectList = new JComboBox(); //use addItem(Object)
+		selectList = new JComboBox<String>(); //use addItem(Object)
 		
 		layoutConst = new GridBagConstraints();
 		layoutConst.gridx=0;
@@ -113,7 +114,8 @@ public class HeyFrame extends JFrame {
 		JButton addStation;
 		JTextField newStation;
 		
-		calcButton = new JButton("Calculate HD");
+	
+		
 		d0 = new JLabel("Distance 0");
 		n0 = new JTextField("0");
 		n0.setEditable(false);
@@ -129,6 +131,25 @@ public class HeyFrame extends JFrame {
 		d4 = new JLabel("Distance 4");
 		n4 = new JTextField("0");
 		n4.setEditable(false);
+			calcButton = new JButton("Calculate HD");
+		
+		calcButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Comparison c = new Comparison((String)selectList.getSelectedItem());
+					n0.setText(String.valueOf(c.getZeros()));
+					n1.setText(String.valueOf(c.getOnes()));
+					n2.setText(String.valueOf(c.getTwos()));
+					n3.setText(String.valueOf(c.getThrees()));
+					n4.setText(String.valueOf(c.getFours()));
+				} catch (IOException e) {
+					n0.setText("No station selected");
+					e.printStackTrace();
+				}
+				
+			}
+		});	
 		newStation = new JTextField(10);
 		newStation.setEditable(true);
 		addStation = new JButton("Add Station");
