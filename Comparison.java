@@ -24,7 +24,6 @@ public class Comparison {
 		   
 		id = ID;
 		File file = new File("Mesonet.txt");
-		System.out.println(file.exists());
 		BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = br.readLine();
 			while(line != null) {
@@ -35,23 +34,27 @@ public class Comparison {
 
 		for(int i = 0; i<all.size() ;i++) {			// add up distance of names from ID
 			int distance = getHammingDist(id, all.get(i));
-			
 			switch(distance) {
 			case 0:
 				zero.add(all.get(i));
 				zerod++;
+				break;
 			case 1:
 				one.add(all.get(i));
 				ones++;	
+				break;
 			case 2:
 				two.add(all.get(i));
 				twos++;
+				break;
 			case 3:
 				three.add(all.get(i));
 				threes++;
+				break;
 			case 4:
 				four.add(all.get(i));
 				fours++;
+				break;
 			}
 		}
 			
