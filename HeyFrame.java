@@ -1,12 +1,5 @@
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,8 +11,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
@@ -29,10 +20,7 @@ import javax.swing.event.ChangeListener;
 
 public class HeyFrame extends JFrame {
 	
-	private String selectedID = ""; // ID selected to compare others to
-	private int selectedDist = 0;
-	
-	JPanel panel1; // left side of window, with required components
+	HeyPanel panel1; // left side of window, with required components
 	HeyPanel panel2; // right side with optional components and fun stuff
 		
 	public HeyFrame() {
@@ -45,7 +33,7 @@ public class HeyFrame extends JFrame {
 		
 		
 		//panel one stuff
-		panel1 = new JPanel();
+		panel1 = new HeyPanel();
 		JLabel entryLabel;
 		JTextField entryField;
 		JSlider dist;
@@ -68,7 +56,7 @@ public class HeyFrame extends JFrame {
 		dist.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				selectedDist = dist.getValue();	
+				dist.getValue();	
 				entryField.setText(String.valueOf(dist.getValue()));
 			}
 		});
@@ -356,21 +344,9 @@ public class HeyFrame extends JFrame {
 					int time = dist/30;
 				stuffs.setText(String.valueOf(time) + " hours");	
 				}
-				
-			}
-        	
-        });
-//        
-//				
-//		
-//		lc = new GridBagConstraints();
-//		lc.gridx = 0;
-//		lc.gridy = 1;
-//		panel2.add(stuffs, lc);
-		
+			} 	
+        });	
 	}
-
-
 
 	public static void main(String[] args) {
 		new HeyFrame();
