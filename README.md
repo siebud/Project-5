@@ -1,5 +1,5 @@
 # Project-5
-![Project 5 UML](https://user-images.githubusercontent.com/47228136/56721647-f2105000-670a-11e9-9d0b-936d209f030b.png)
+![Project 5 UML](https://user-images.githubusercontent.com/47228136/56763297-a8098780-6767-11e9-8c20-5aef031df99d.png)
 
 I began my code based on two classes, the Frame class and the Panel class. I knew from previous projects and labs that
 most of my coding would be done in th Frame class. At this point I simply created the first half of the required 
