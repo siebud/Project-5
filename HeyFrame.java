@@ -184,7 +184,6 @@ public class HeyFrame extends JFrame {
 				if (!nameList.contains(newStation.getText())) {
 					selectList.addItem(newStation.getText());	//write code to handle duplicates
 					nameList.add(newStation.getText());
-					System.out.println(nameList);
 				}
 			}
 		});	
@@ -267,8 +266,6 @@ public class HeyFrame extends JFrame {
 		
 		panel2.setLayout(new GridBagLayout());
 		GridBagConstraints lc = null;
-				
-		
 		
 		JLabel newStuff = new JLabel("How far away from the station are you?");
 		lc = new GridBagConstraints();
