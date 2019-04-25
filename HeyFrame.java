@@ -12,6 +12,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -46,7 +47,7 @@ public class HeyFrame extends JFrame {
 		GridBagConstraints layoutConst = null;
 		
 		entryLabel = new JLabel("Enter Hamming Dist:");
-		entryField = new JTextField(10);
+		entryField = new JTextField("2", 10);
 		entryField.setEditable(false);
 		
 		dist = new JSlider(1,4);
@@ -63,9 +64,17 @@ public class HeyFrame extends JFrame {
 		
 		stationList = new JTextArea(10, 20);
 		stationList.setEditable(false);
+		JScrollPane stationPane = new JScrollPane(stationList);
 		
+		Comparison comp = null;
+		try {
+			comp = new Comparison("");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		testID = new JLabel("Compare with: \t");
-		selectList = new JComboBox<String>(); //use addItem(Object)
+		selectList = new JComboBox<String>(comp.getNameList()); //use addItem(Object)
 		
 		showStation = new JButton("Show Station");
 		showStation.addActionListener(new ActionListener() {
@@ -112,7 +121,7 @@ public class HeyFrame extends JFrame {
 		layoutConst = new GridBagConstraints();
 		layoutConst.gridx=0;
 		layoutConst.gridy=3;
-		panel1.add(stationList,layoutConst);
+		panel1.add(stationPane,layoutConst);
 		
 		layoutConst = new GridBagConstraints();
 		layoutConst.gridx=0;
@@ -330,15 +339,15 @@ public class HeyFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				int dist = Integer.valueOf(inputStuff.getText());
 				if(w.isSelected()) {
-					int time = dist/3;
+					double time = dist/3.0;
 				stuffs.setText(String.valueOf(time) + " hours");	
 				}
 				else if(b.isSelected()) {
-					int time = dist/12;
+					double time = dist/12.0;
 				stuffs.setText(String.valueOf(time) + " hours");	
 				}
 				else if(d.isSelected()) {
-					int time = dist/30;
+					double time = dist/30.0;
 				stuffs.setText(String.valueOf(time) + " hours");	
 				}
 			} 	

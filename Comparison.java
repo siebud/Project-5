@@ -17,10 +17,10 @@ public class Comparison {
 		ArrayList<String> two = new ArrayList<String>();
 		ArrayList<String> three = new ArrayList<String>();
 		ArrayList<String> four = new ArrayList<String>();
+		ArrayList<String> all = new ArrayList<String>();
 		
 	public Comparison(String ID)throws IOException {
-		ArrayList<String> all = new ArrayList<String>();	
-		   
+			
 		id = ID;
 		File file = new File("Mesonet.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
@@ -94,6 +94,15 @@ public class Comparison {
 			return four;
 		else 
 			return zero;
+	}
+	
+	public String[] getNameList(){
+		String[] ans = new String[all.size()];
+		for(int i = 0 ;i<all.size(); i++) {
+			ans[i] = all.get(i);
+			System.out.println(ans[i]);
+		}
+		return ans;
 		
 	}
 }
